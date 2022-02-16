@@ -6,8 +6,7 @@ body
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 100vh;
-	background: linear-gradient(#fff 0% ,#fff 50%, #42a8f9 50%, #42a8f9 100%);
+	min-height: 100vh;	
 	font-family: 'Poppins', sans-serif;
 }
 .navigation
