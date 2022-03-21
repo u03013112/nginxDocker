@@ -1,14 +1,48 @@
 var facebookUpload = new Vue({
     el: '#facebookUpload',
-    data:{
-        searchName:"",
-        searchLang:"",
-        searchSizeX:"",
-        searchSizeY:"",
-        selectedAdAccounts:[],
-        adAccounts:[{"name": "Rivergame Limited_2", "id": "act_411384076354800"}, {"name": "TOPWAR-test", "id": "act_490714451497562"}, {"name": "\u8463\u6587\u5f3a", "id": "act_2136430579990594"}, {"name": "Topwar_AOS_LXY_meetsocial", "id": "act_415871175696694"}, {"name": "JP_ANDROID_TOPWAR_02", "id": "act_2429627080409151"}, {"name": "TOPWAR_Japan", "id": "act_2608384325881074"}, {"name": "Topwar_IOS_XT_meetsocial", "id": "act_699290953888244"}, {"name": "Topwar_AOS_LL_meetsocial", "id": "act_675425826308736"}, {"name": "Topwar_AOS_LXY_meetsocial_02", "id": "act_2446887542067905"}, {"name": "Topwar_AOS/IOS_SQ_madhouse", "id": "act_479168776003123"}, {"name": "Topwar_AOS_XT_meetsocial", "id": "act_3129698863723372"}, {"name": "Topwar_IOS_LXY_madhouse", "id": "act_2415099665407852"}, {"name": "Topwar Commander_meetsocial_XY_01", "id": "act_326947178170709"}, {"name": "Topwar_IOS_LL_madhouse", "id": "act_843380329425355"}, {"name": "Topwar_IOS_YMY_madhouse", "id": "act_2785498658211088"}, {"name": "TapTycoon_AOS_JY_meetsocial", "id": "act_448956482658552"}, {"name": "Topwar_meetsoical_XY_01", "id": "act_2087871701344165"}, {"name": "Topwar_meetsoical_XY_02", "id": "act_827202531428135"}, {"name": "Topwar_meetsoical_SQ_05", "id": "act_391098155419608"}, {"name": "Topwar_meetsoical_LL_04", "id": "act_1509401562581168"}, {"name": "IOS14-meetsocial", "id": "act_3994017197328271"}, {"name": "Topwar_meetsoical_LL_03", "id": "act_286073862679808"}, {"name": "ZGirl3_meetsocial_01", "id": "act_197104861828457"}, {"name": "Topwar_meetsocial_MF_02", "id": "act_494931278195474"}, {"name": "Topwar_meetsocial_SZJ_04", "id": "act_537655544054959"}, {"name": "Topwar_meetsocial_SZJ_05", "id": "act_350056866528391"}, {"name": "Topwar_meetsocial_LQ_02-\u5317\u4eac\u65f6\u95f4", "id": "act_824129864894821"}, {"name": "Topwar_meetsocial_LQ_03", "id": "act_878827552729590"}, {"name": "Topwar_meetsocial_LQ_04", "id": "act_4114142118661381"}, {"name": "Topwar_meetsocial_MF_03", "id": "act_119705443401147"}, {"name": "Zgirls_meetsocial_iOS_03", "id": "act_334840028133811"}, {"name": "Topwar_meetsocial_SZJ_AOS_01-\u5317\u4eac\u65f6\u95f4", "id": "act_294633215671278"}, {"name": "Topwar_meetsocial_MF_01", "id": "act_151183350212499"}, {"name": "Topwar_meetsocial_LQ_AOS_01", "id": "act_4011928815511457"}, {"name": "Topwarweb_meetsocial_SZJ_03", "id": "act_4148134278585247"}, {"name": "Topwar_meetsocial_SZJ_02-\u5317\u4eac\u65f6\u95f4", "id": "act_165848605556081"}, {"name": "Zgirls_meetsocial_02_test", "id": "act_832966374318388"}, {"name": "Topwar_test_ID_meetsoical_01", "id": "act_765342337718084"}, {"name": "Topwar_test_ID_meetsoical_02", "id": "act_1039150256946479"}],
-        filePaths:[{"path":"/mnt/AD/\u6210\u7247/\u5916\u5305/20220318_\u96f7\u8fbe_RBN_\u6210\u7247/UI/EN/20220318_\u96f7\u8fbe_RBN_1080X1080_EN.mp4"}],
-        selectedFilePaths:[],
-        outText:""
+    data: {
+        searchName: "",
+        searchLang: "",
+        searchSize: "",
+        selectedAdAccounts: [],
+        adAccounts: [],
+        filePaths: [],
+        selectedFilePaths: [],
+        outText: ""
+    },
+    methods: {
+        reflushAdAccountBtnClick:function(){
+            this.$http.get('http://192.168.40.62:8080/facebookAccounts').then(response => response.json()).then( json=>{
+                this.adAccounts = json;
+            },function(){
+                this.outText = '请求失败处理';
+            });
+            
+        },
+        searchBtnClick:function(){
+            if (this.searchName == "") {
+                this.outText = "需要名字，不然文件太多，会死机的！"
+                return
+            }
+            var names = this.searchName.split(" ");
+            var data = {name:names}
+
+            if (this.searchLang != "") {
+                var langs = this.searchLang.split(" ");
+                data.lang=langs
+            }
+            if (this.searchSize != "") {
+                var sizes = this.searchSize.split(" ");
+                data.size=sizes
+            }
+            console.log(data)
+            
+            this.outText = "正在搜索 请耐心等待，大约30秒"
+            this.$http.post('http://192.168.40.62:8080/searchFromWarehouse',data).then(response => response.json()).then( json=>{
+                this.filePaths = json
+            },function(res){
+                this.outText = '请求失败处理';
+            });
+        }
     }
 })

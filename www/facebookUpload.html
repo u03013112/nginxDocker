@@ -6,21 +6,22 @@
     <title>Facebook Upload</title>
     <link rel="stylesheet" href="facebookUpload.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
 
 </head>
 
 <body>
-    <form id="facebookUpload" style="display: flex; width:100%">
+    <div id="facebookUpload" style="display: flex; width:100%">
         <div id="leftUI" style="width:40%">
             <div>
                 <input v-model="searchName" placeholder="search name">
                 <input v-model="searchLang" placeholder="search lang">
             </div>
             <div>
-                <input v-model="searchSizeX" placeholder="search size x">
-                <input v-model="searchSizeY" placeholder="search size y">
+                <input v-model="searchSize" placeholder="1080X1080">
+                <!-- <input v-model="searchSizeY" placeholder="search size y"> -->
             </div>
-            <button onclick="searchBtnClick()">Search</button>
+            <button v-on:click="searchBtnClick()">Search</button>
 
             <div v-for="filePath in filePaths">
                 <input type="checkbox" v-bind:name="filePath.path" v-bind:value="filePath.path" v-model="selectedFilePaths">
@@ -28,7 +29,7 @@
             </div>
         </div>
         <div id="MidUI" style="width:40%">
-            <button onclick="reflushAdAccountBtnClick()">reflush ad account</button>
+            <button v-on:click="reflushAdAccountBtnClick()">reflush ad account</button>
             <div v-for="adAccount in adAccounts">
                 <input type="checkbox" v-bind:name="adAccount.name" v-bind:value="adAccount.id" v-model="selectedAdAccounts">
                 {{ adAccount.name }}
@@ -39,7 +40,7 @@
             <button onclick="uploadBtnClick()">Upload</button>
             <h6>{{ outText }}</h6>
         </div>
-    </form>
+    </div>
 
     <script src="facebookUpload.js"></script>
 </body>
