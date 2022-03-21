@@ -57,7 +57,6 @@ var facebookUpload = new Vue({
             this.outText = "正在上传 请耐心等待，文件和账号越多，时间越长，慢慢等待"
             var data = {"accountIds":this.selectedAdAccounts,"filePathList":this.selectedFilePaths}
             this.$http.post('http://192.168.40.62:8080/facebookUpload',data).then(response => response.json()).then( json=>{
-                this.filePaths = json
                 this.outText = '上传完成，有时候FB反应略慢，等几秒刷新FB页面就有了'
             },function(res){
                 this.outText = '请求失败处理';
