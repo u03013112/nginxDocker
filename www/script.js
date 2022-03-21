@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-        notReady: true,
+        notReady: false,
         hotkeys: [
             { text: 'Escape : Skip the battle' },
             { text: 'Escape : Quit from some menu' },
