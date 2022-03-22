@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="facebookUpload.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
-
 </head>
 
 <body>
@@ -22,7 +21,7 @@
             <label>分辨率填写1080X1080、1920X1080等，中间是大写的X，多分辨率空格分开，不填代表所有分辨率。</label>
 
             <div>
-                <input v-model="searchName" placeholder="素材明">
+                <input v-model="searchName" placeholder="素材名">
                 <input v-model="searchLang" placeholder="语言">
             </div>
             <div>
@@ -31,9 +30,10 @@
             </div>
             <button v-on:click="searchBtnClick()">Search</button>
             <label>搜索较慢，点一下耐心等耐即可，不要反复点击</label>
-
+            <button v-on:click="selectAllVideo()">全选</button>
+            <button v-on:click="unselectAllVideo()">全不选</button>
             <div v-for="filePath in filePaths">
-                <input type="checkbox" v-bind:name="filePath.path" v-bind:value="filePath.path" v-model="selectedFilePaths">
+                <input type="checkbox" name="videoCheckbox" v-bind:value="filePath.path" v-model="selectedFilePaths">
                 {{ filePath.path }}
             </div>
         </div>
