@@ -11,17 +11,26 @@
 </head>
 
 <body>
+    <div style="height:10%">
+        <h1>Facebook Upload</h1>
+    </div>
     <div id="facebookUpload" style="display: flex; width:100%">
         <div id="leftUI" style="width:40%">
+            <h3>第一步：</h3>
+            <label>填写希望上传的素材名，必填，多素材用空格分开</label>
+            <label>语言填写大写的缩写，比如EN、JP，多语言用空格分开，不填代表所有语言，</label>
+            <label>分辨率填写1080X1080、1920X1080等，中间是大写的X，多分辨率空格分开，不填代表所有分辨率。</label>
+
             <div>
-                <input v-model="searchName" placeholder="search name">
-                <input v-model="searchLang" placeholder="search lang">
+                <input v-model="searchName" placeholder="素材明">
+                <input v-model="searchLang" placeholder="语言">
             </div>
             <div>
-                <input v-model="searchSize" placeholder="1080X1080">
+                <input v-model="searchSize" placeholder="分辨率">
                 <!-- <input v-model="searchSizeY" placeholder="search size y"> -->
             </div>
             <button v-on:click="searchBtnClick()">Search</button>
+            <label>搜索较慢，点一下耐心等耐即可，不要反复点击</label>
 
             <div v-for="filePath in filePaths">
                 <input type="checkbox" v-bind:name="filePath.path" v-bind:value="filePath.path" v-model="selectedFilePaths">
@@ -29,6 +38,8 @@
             </div>
         </div>
         <div id="MidUI" style="width:40%">
+            <h3>第二步：</h3>
+            <label>选择需要上传至的FB账号</label>
             <button v-on:click="reflushAdAccountBtnClick()">reflush ad account</button>
             <div v-for="adAccount in adAccounts">
                 <input type="checkbox" v-bind:name="adAccount.name" v-bind:value="adAccount.id" v-model="selectedAdAccounts">
@@ -37,6 +48,8 @@
             <!-- <span>Selected account: {{ selectedAdAccounts }}</span> -->
         </div>
         <div id="RightUI" style="width:20%">
+            <h3>第三步：</h3>
+            <label>前两步完成后点击Upload</label>
             <button v-on:click="uploadBtnClick()">Upload</button>
             <h6>{{ outText }}</h6>
         </div>
