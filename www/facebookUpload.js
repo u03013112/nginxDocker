@@ -6,7 +6,7 @@ var facebookUpload = new Vue({
         searchSize: "",
         selectedAdAccounts: [],
         adAccounts: [],
-        filePaths: [{path:"1"},{path:"2"},{path:"3"}],
+        filePaths: [],
         selectedFilePaths: [],
         outText: ""
     },
