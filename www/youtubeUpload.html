@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Youtube Upload</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+
+</head>
+
+<body>
+    <div style="height:10%">
+        <h1>Youtube Upload</h1>
+    </div>
+    <div id="youtubeUpload" style="display: flex; width:100%">
+        <div id="leftUI" style="width:80%">
+            <h3>第一步：</h3>
+            <label>填写希望上传的素材名，必填，多素材用空格分开</label>
+            <label>语言填写大写的缩写，比如EN、JP，多语言用空格分开，不填代表所有语言，</label>
+            <label>分辨率填写1080X1080、1920X1080等，中间是大写的X，多分辨率空格分开，不填代表所有分辨率。</label>
+
+            <div>
+                <input v-model="searchName" placeholder="素材名">
+                <input v-model="searchLang" placeholder="语言">
+            </div>
+            <div>
+                <input v-model="searchSize" placeholder="分辨率">
+                <!-- <input v-model="searchSizeY" placeholder="search size y"> -->
+            </div>
+            <button v-on:click="searchBtnClick()">Search</button>
+            <label>搜索较慢，点一下耐心等耐即可，不要反复点击</label>
+
+            <div v-for="filePath in filePaths">
+                <input type="checkbox" v-bind:name="filePath.path" v-bind:value="filePath.path" v-model="selectedFilePaths">
+                {{ filePath.path }}
+            </div>
+        </div>
+        <div id="RightUI" style="width:20%">
+            <h3>第二步：</h3>
+            <label>前两步完成后点击Upload</label>
+            <button v-on:click="uploadBtnClick()">Upload</button>
+            <h6>{{ outText }}</h6>
+        </div>
+    </div>
+
+    <script src="youtubeUpload.js"></script>
+</body>
+
+</html>
