@@ -48,6 +48,20 @@ var youtubeUpload = new Vue({
             },function(res){
                 this.outText = '请求失败处理';
             });
+        },
+        selectAllVideo:function(){
+            var cks = document.getElementsByName('videoCheckbox');
+            for (var i=0;i<cks.length;i++){
+                cks[i].checked = true;
+                this.selectedFilePaths=this.filePaths;
+            }
+        },
+        unselectAllVideo:function(){
+            var cks = document.getElementsByName('videoCheckbox');
+            for (var i=0;i<cks.length;i++){
+                cks[i].checked = false;
+                this.selectedFilePaths=[];
+            }
         }
     }
 })
