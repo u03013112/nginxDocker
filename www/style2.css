@@ -23,7 +23,7 @@ body
 }
 .navigation input:checked ~ .menu
 {
-	height: 680px;
+	height: 580px;
 }
 .menu
 {
@@ -53,4 +53,9 @@ input+label
 .menu>div
 {
     padding-left: 10px;
+	background-color: rgb(245, 206, 171);
+}
+.menu label
+{
+	font-size:10px;
 }
