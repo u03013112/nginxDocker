@@ -23,7 +23,7 @@ body
 }
 .navigation input:checked ~ .menu
 {
-	height: 480px;
+	height: 680px;
 }
 .menu
 {
@@ -31,6 +31,17 @@ body
     height: 0px;
     overflow: hidden;
 }
+.navigation input:checked ~ .buildingMenu
+{
+	height: 480px;
+}
+.buildingMenu
+{
+	transition: 0.5s;
+    height: 0px;
+    overflow: hidden;
+}
+
 input+label
 {
     text-decoration: none;
@@ -38,4 +49,8 @@ input+label
 	text-transform: uppercase;
 	font-weight: 600;
 	display: inline-block;
+}
+.menu>div
+{
+    padding-left: 10px;
 }

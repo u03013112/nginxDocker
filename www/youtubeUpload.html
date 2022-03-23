@@ -32,9 +32,9 @@
             <label>搜索较慢，点一下耐心等耐即可，不要反复点击</label>
             <button v-on:click="selectAllVideo()">全选</button>
             <button v-on:click="unselectAllVideo()">全不选</button>
-            
+
             <div v-for="filePath in filePaths">
-                <input type="checkbox" v-bind:name="filePath.path" v-bind:value="filePath.path" v-model="selectedFilePaths">
+                <input type="checkbox" name="videoCheckbox" v-bind:value="filePath.path" v-model="selectedFilePaths">
                 {{ filePath.path }}
             </div>
         </div>

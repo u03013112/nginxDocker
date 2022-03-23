@@ -30,101 +30,107 @@
                         </div>
                     </div>
                     <div>
-                        <input type="radio" id="Gold Mine" value="Gold Mine" name="radio0">
-                        <label for="Gold Mine">Gold Mine</label>
+                        <input type="radio" id="Building" value="Building" name="radio0">
+                        <label for="Building">Building</label>
                         <div class="menu">
-                            <div style="height: 80px; background: white;">
-                                <h4 style="margin: 8px;">Technology</h4>
-                                <h5 style="margin: 0px;">Building level:{{ goldMine.buildingLevel }}</h5>
-                                <h5 style="margin: 0px;">Merge level:{{ goldMine.mergeLevel }}</h5>
+                            <div>
+                                <input type="radio" id="Gold Mine" value="Gold Mine" name="radio1">
+                                <label for="Gold Mine">Gold Mine</label>
+                                <div class="buildingMenu">
+                                    <div style="height: 80px; background: white;">
+                                        <h4 style="margin: 8px;">Technology</h4>
+                                        <h5 style="margin: 0px;">Building level:{{ goldMine.buildingLevel }}</h5>
+                                        <h5 style="margin: 0px;">Merge level:{{ goldMine.mergeLevel }}</h5>
+                                    </div>
+                                    <div style="height: 130px; background: white;">
+                                        <h4 style="margin: 8px;">Build task</h4>
+                                        <h6 style="margin: 0px;">Build level {{ goldMine.mergeLevel }} to the following quantity</h6>
+                                        <h6 style="margin: 0px;" id="topwar_helper_JKTaskInputResult">{{ goldMine.buildMax }}</h6>
+                                        <input id="topwar_helper_JKTaskInput" type="range" min="1" max="10"
+                                            name="topwar_helper_JKTaskInput">
+                                        <script type='text/javascript'>
+                                            $(function () {
+                                                $('#topwar_helper_JKTaskInput').bind('input propertychange', function () {
+                                                    $('#topwar_helper_JKTaskInputResult').html($(this).val());
+                                                });
+                                            })
+                                        </script>
+                                        <button onclick="JKTaskButtonClicked()">Dispatch a
+                                            task</button>
+                                    </div>
+                                    <div style="height: 210px; background: white;">
+                                        <h4 style="margin: 8px;">Status</h4>
+                                        <li v-for="statusStr in goldMine.statusStrs">
+                                            {{ statusStr.text }}
+                                        </li>
+                                    </div>
+                                </div>
                             </div>
-                            <div style="height: 130px; background: white;">
-                                <h4 style="margin: 8px;">Build task</h4>
-                                <h6 style="margin: 0px;">Build level {{ goldMine.mergeLevel }} to the following quantity</h6>
-                                <h6 style="margin: 0px;" id="topwar_helper_JKTaskInputResult">{{ goldMine.buildMax }}</h6>
-                                <input id="topwar_helper_JKTaskInput" type="range" min="1" max="10"
-                                    name="topwar_helper_JKTaskInput">
-                                <script type='text/javascript'>
-                                    $(function () {
-                                        $('#topwar_helper_JKTaskInput').bind('input propertychange', function () {
-                                            $('#topwar_helper_JKTaskInputResult').html($(this).val());
-                                        });
-                                    })
-                                </script>
-                                <button onclick="JKTaskButtonClicked()">Dispatch a
-                                    task</button>
+                            <div>
+                                <input type="radio" id="Barrack" value="Barrack" name="radio1">
+                                <label for="Barrack">Barrack</label>
+                                <div class="buildingMenu">
+                                    <div style="height: 80px; background: white;">
+                                        <h4 style="margin: 8px;">Technology</h4>
+                                        <h5 style="margin: 0px;">Building level:{{ barrack.buildingLevel }}</h5>
+                                        <h5 style="margin: 0px;">Merge level:{{ barrack.mergeLevel }}</h5>
+                                    </div>
+                                    <div style="height: 130px; background: white;">
+                                        <h4 style="margin: 8px;">Build task</h4>
+                                        <h6 style="margin: 0px;">Build level {{ barrack.mergeLevel }} to the following quantity</h6>
+                                        <h6 style="margin: 0px;" id="topwar_helper_BGCTaskInputResult">{{ barrack.buildMax }}</h6>
+                                        <input id="topwar_helper_BGCTaskInput" type="range" min="1" max="10"
+                                            name="topwar_helper_BGCTaskInput">
+                                        <script type='text/javascript'>
+                                            $(function () {
+                                                $('#topwar_helper_BGCTaskInput').bind('input propertychange', function () {
+                                                    $('#topwar_helper_BGCTaskInputResult').html($(this).val());
+                                                });
+                                            })
+                                        </script>
+                                        <button onclick="BGCTaskButtonClicked()">Dispatch a
+                                            task</button>
+                                    </div>
+                                    <div style="height: 210px; background: white;">
+                                        <h4 style="margin: 8px;">Status</h4>
+                                        <li v-for="statusStr in barrack.statusStrs">
+                                            {{ statusStr.text }}
+                                        </li>
+                                    </div>
+                                </div>
                             </div>
-                            <div style="height: 210px; background: white;">
-                                <h4 style="margin: 8px;">Status</h4>
-                                <li v-for="statusStr in goldMine.statusStrs">
-                                    {{ statusStr.text }}
-                                </li>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="radio" id="Barrack" value="Barrack" name="radio0">
-                        <label for="Barrack">Barrack</label>
-                        <div class="menu">
-                            <div style="height: 80px; background: white;">
-                                <h4 style="margin: 8px;">Technology</h4>
-                                <h5 style="margin: 0px;">Building level:{{ barrack.buildingLevel }}</h5>
-                                <h5 style="margin: 0px;">Merge level:{{ barrack.mergeLevel }}</h5>
-                            </div>
-                            <div style="height: 130px; background: white;">
-                                <h4 style="margin: 8px;">Build task</h4>
-                                <h6 style="margin: 0px;">Build level {{ barrack.mergeLevel }} to the following quantity</h6>
-                                <h6 style="margin: 0px;" id="topwar_helper_BGCTaskInputResult">{{ barrack.buildMax }}</h6>
-                                <input id="topwar_helper_BGCTaskInput" type="range" min="1" max="10"
-                                    name="topwar_helper_BGCTaskInput">
-                                <script type='text/javascript'>
-                                    $(function () {
-                                        $('#topwar_helper_BGCTaskInput').bind('input propertychange', function () {
-                                            $('#topwar_helper_BGCTaskInputResult').html($(this).val());
-                                        });
-                                    })
-                                </script>
-                                <button onclick="BGCTaskButtonClicked()">Dispatch a
-                                    task</button>
-                            </div>
-                            <div style="height: 210px; background: white;">
-                                <h4 style="margin: 8px;">Status</h4>
-                                <li v-for="statusStr in barrack.statusStrs">
-                                    {{ statusStr.text }}
-                                </li>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="radio" id="Shipyaird" value="Shipyaird" name="radio0">
-                        <label for="Shipyaird">Shipyaird</label>
-                        <div class="menu">
-                            <div style="height: 80px; background: white;">
-                                <h4 style="margin: 8px;">Technology</h4>
-                                <h5 style="margin: 0px;">Building level:{{ shipyard.buildingLevel }}</h5>
-                                <h5 style="margin: 0px;">Merge level:{{ shipyard.mergeLevel }}</h5>
-                            </div>
-                            <div style="height: 130px; background: white;">
-                                <h4 style="margin: 8px;">Build task</h4>
-                                <h6 style="margin: 0px;">Build level {{ shipyard.mergeLevel }} to the following quantity</h6>
-                                <h6 style="margin: 0px;" id="topwar_helper_ZCCTaskInputResult">{{ shipyard.buildMax }}</h6>
-                                <input id="topwar_helper_ZCCTaskInput" type="range" min="1" max="16"
-                                    name="topwar_helper_ZCCTaskInput">
-                                <script type='text/javascript'>
-                                    $(function () {
-                                        $('#topwar_helper_ZCCTaskInput').bind('input propertychange', function () {
-                                            $('#topwar_helper_ZCCTaskInputResult').html($(this).val());
-                                        });
-                                    })
-                                </script>
-                                <button onclick="ZCCTaskButtonClicked()">Dispatch a
-                                    task</button>
-                            </div>
-                            <div style="height: 210px; background: white;">
-                                <h4 style="margin: 8px;">Status</h4>
-                                <li v-for="statusStr in shipyard.statusStrs">
-                                    {{ statusStr.text }}
-                                </li>
+                            <div>
+                                <input type="radio" id="Shipyaird" value="Shipyaird" name="radio1">
+                                <label for="Shipyaird">Shipyaird</label>
+                                <div class="buildingMenu">
+                                    <div style="height: 80px; background: white;">
+                                        <h4 style="margin: 8px;">Technology</h4>
+                                        <h5 style="margin: 0px;">Building level:{{ shipyard.buildingLevel }}</h5>
+                                        <h5 style="margin: 0px;">Merge level:{{ shipyard.mergeLevel }}</h5>
+                                    </div>
+                                    <div style="height: 130px; background: white;">
+                                        <h4 style="margin: 8px;">Build task</h4>
+                                        <h6 style="margin: 0px;">Build level {{ shipyard.mergeLevel }} to the following quantity</h6>
+                                        <h6 style="margin: 0px;" id="topwar_helper_ZCCTaskInputResult">{{ shipyard.buildMax }}</h6>
+                                        <input id="topwar_helper_ZCCTaskInput" type="range" min="1" max="16"
+                                            name="topwar_helper_ZCCTaskInput">
+                                        <script type='text/javascript'>
+                                            $(function () {
+                                                $('#topwar_helper_ZCCTaskInput').bind('input propertychange', function () {
+                                                    $('#topwar_helper_ZCCTaskInputResult').html($(this).val());
+                                                });
+                                            })
+                                        </script>
+                                        <button onclick="ZCCTaskButtonClicked()">Dispatch a
+                                            task</button>
+                                    </div>
+                                    <div style="height: 210px; background: white;">
+                                        <h4 style="margin: 8px;">Status</h4>
+                                        <li v-for="statusStr in shipyard.statusStrs">
+                                            {{ statusStr.text }}
+                                        </li>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
