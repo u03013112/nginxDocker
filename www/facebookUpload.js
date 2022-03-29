@@ -64,13 +64,12 @@ var facebookUpload = new Vue({
         },
         selectAllVideo:function(){
             var cks = document.getElementsByName('videoCheckbox');
+            for (var j=0;j<this.filePaths.length;j++){
+                var filePath = this.filePaths[j].path;
+                this.selectedFilePaths.push(filePath);
+            }
             for (var i=0;i<cks.length;i++){
-                cks[i].checked = true;
-                for (var j=0;j<this.filePaths.length;j++){
-                    var filePath = this.filePaths[j].path;
-                    this.selectedFilePaths.push(filePath);
-                }
-                
+                cks[i].checked = true;                
             }
         },
         unselectAllVideo:function(){
