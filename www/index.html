@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <div id="topwar_helper_rightUI" style="position: absolute; width: 20%; height: 100%; right: 0px; background: pink;">
         <div id="app">
             <div v-show="notReady">
@@ -20,7 +19,7 @@
             </div>
             <div v-show="!notReady">
                 <div class="navigation">
-                    <div>
+                    <div style="display:flex;justify-content: flex-end">
                         <input type="radio" id="Hotkey" value="Hotkey" name="radio0">
                         <label for="Hotkey">Hotkey</label>
                         <div class="menu">
@@ -131,6 +130,31 @@
                                         </li>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="radio" id="Radar" value="Radar" name="radio0">
+                        <label for="Radar">Radar</label>
+                        <div class="menu">
+                            <label>helper text here</label>
+                            <h6 style="margin: 0px;">repeat count:{{ radar.countMax }}</h6>
+                            <input type="range" min="1" max="10" v-model="radar.countMax">
+                            <h6 style="margin: 0px;">interval(s):{{ radar.interval }}</h6>
+                            <input type="range" min="0" max="60" v-model="radar.interval">
+                            <h6 style="margin: 0px;">retry interval(s):{{ radar.retryInterval }}</h6>
+                            <input type="range" min="0" max="60" v-model="radar.retryInterval">
+                            <h6 style="margin: 0px;">retry count max:{{ radar.retryCountMax }}</h6>
+                            <input type="range" min="0" max="10" v-model="radar.retryCountMax">
+                            <br>
+                            <button onclick="THRadarTaskStartButtonClicked()">start</button>
+                            <button onclick="THRadarTaskStopButtonClicked()">stop</button>
+                            <br>
+                            <label style="font-size:15px;margin:10px;">log here:<br></label>
+                            <div style="height: 240px; background: white;overflow:scroll">
+                                <p v-for="logStr in radar.logStrs" style="font-size:3px;margin:0px;">
+                                    {{ logStr }}<br>
+                                </p>
                             </div>
                         </div>
                     </div>

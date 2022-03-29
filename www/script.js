@@ -37,6 +37,13 @@ var app = new Vue({
                 { text: 'Level 58 count:12' },
                 { text: 'Level 58 count:13' },
             ]
+        },
+        radar: {
+            countMax:1,
+            interval:30,
+            retryInterval:10,
+            retryCountMax:3,
+            logStrs:['1','2','3'],
         }
     }
 })

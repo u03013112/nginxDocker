@@ -3,7 +3,6 @@ body
     margin: 0;
 	padding: 0;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	min-height: 100vh;	
 	font-family: 'Poppins', sans-serif;
@@ -12,7 +11,6 @@ body
 {
 	position: relative;
 	display: flex;
-	justify-content: center;
 	align-items: left;
 	/* background: rgb(236, 192, 192); */
 	padding: 20px;
