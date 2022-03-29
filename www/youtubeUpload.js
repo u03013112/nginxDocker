@@ -53,7 +53,10 @@ var youtubeUpload = new Vue({
             var cks = document.getElementsByName('videoCheckbox');
             for (var i=0;i<cks.length;i++){
                 cks[i].checked = true;
-                this.selectedFilePaths=this.filePaths;
+                for (var j=0;j<this.filePaths.length;j++){
+                    var filePath = this.filePaths[j].path;
+                    this.selectedFilePaths.push(filePath);
+                }
             }
         },
         unselectAllVideo:function(){
