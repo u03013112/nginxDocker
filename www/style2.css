@@ -1,59 +1,123 @@
-body
-{
+body {
     margin: 0;
-	padding: 0;
-	display: flex;
-	align-items: center;
-	min-height: 100vh;	
-	font-family: 'Poppins', sans-serif;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
 }
-.navigation
-{
-	position: relative;
-	display: flex;
-	align-items: left;
-	/* background: rgb(236, 192, 192); */
-	padding: 20px;
-	border-radius: 4px;
-	overflow: hidden;
-	box-shadow: 0 8px 15px rgba(0,0,0,.2);
-    flex-direction: column;
-}
-.navigation input:checked ~ .menu
-{
-	height: 580px;
-}
-.menu
-{
-	transition: 0.5s;
-    height: 0px;
+
+.navigation {
+    position: relative;
+    display: flex;
+    align-items: left;
+    /* background: rgb(236, 192, 192); */
+    padding: 20px;
+    border-radius: 4px;
     overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .2);
+    flex-direction: column;
+    height: 100%;
 }
-.navigation input:checked ~ .buildingMenu
-{
-	height: 480px;
+
+.navigation input:checked~.menu {
+    height: 580px;
 }
-.buildingMenu
-{
-	transition: 0.5s;
+
+.menu {
+    transition: 0.5s;
     height: 0px;
     overflow: hidden;
 }
 
-input+label
-{
+.navigation input:checked~.buildingMenu {
+    height: 480px;
+}
+
+.buildingMenu {
+    transition: 0.5s;
+    height: 0px;
+    overflow: hidden;
+}
+
+input+label {
     text-decoration: none;
-	color: #666;
-	text-transform: uppercase;
-	font-weight: 600;
-	display: inline-block;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
 }
-.menu>div
-{
+
+.menu>div {
     padding-left: 10px;
-	background-color: rgb(245, 206, 171);
+    background-color: rgb(245, 206, 171);
 }
-.menu label
-{
-	font-size:10px;
+
+.menu label {
+    font-size: 10px;
+}
+
+.redpointPrefix {
+    text-decoration: none;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    padding-right: 10px;
+}
+
+.redpoint {
+    display: block;
+    background: #f00;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    top: 0px;
+    right: 0px;
+    position: absolute;
+}
+
+div.haveTips {
+    width: 1em;
+    text-align: center;
+    background-color: rgb(117, 111, 111);
+    color: rgb(27, 27, 27);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+div.haveTips::after {
+    content: attr(tips);
+    padding: 5px;
+    background-color: rgb(212, 168, 168);
+    box-shadow: 0 0 5px #666;
+    columns: white;
+    min-width: 5em;
+    max-width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -10px);
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+div.haveTips:hover:after {
+    opacity: 1;
+}
+
+.badge {
+    /* position: absolute; */
+    position: relative;
+    top: -.5rem;
+    right: -.1rem;
+    border-radius: 15px;
+    background-color: #e1ff00;
+    font-family: 'Helvetica Neue', 'Arial', sans;
+    font-size: .8rem;
+    padding: 0 .5rem;
 }

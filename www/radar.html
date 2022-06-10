@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>radar</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <link rel="stylesheet" href="radarStyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="https://cdnjs.com/libraries/hint.css" />
+    </head>
+    <body>
+        <div id="topwar_helper_rightUI" style="position: absolute; width: 20%; height: 100%; right: 0px; background: pink;">
+            <div id="radar">
+                <h4 style="margin: 0px;">Auto Radar Messions</h4>
+                <h6 style="margin: 0px;">Energy: {{ energy }}/{{ energyMax }}</h6>
+                <h6 style="margin: 0px;">small VIT Capsules:{{smallVITCapsules}}</h6>
+                <h6 style="margin: 0px;">large VIT Capsules:{{largeVITCapsules}}</h6>
+                <h6 style="margin: 0px;">Mession Storage: {{ messionStorage }}/{{ messionStorageMax }}</h6>
+                <h6 style="margin: 0px;">New messions avalible in:{{ newMessionTime }}</h6>
+                <h6 style="margin: 0px;">Marching Queue: {{ marchingQueue }}/{{ marchingQueueMax }}</h6>
+                <input type="range" min="1" max="20" style="float:none;" v-model="repeat">
+                <h6 style="margin: 0px;">Auto messions count:{{repeat}}</h6>
+                <button>start</button>
+                <button>stop</button>
+                <button v-on:click="optionsBtnClicked()">options</button>
+                <div id="options" v-show="optionActive">
+                    <input type="radio" id="Priority" value="Priority">
+                    <label for="Priority" class="hint--botton  hint--small" style="border: 1px solid #eee;padding:3px 6px;border-radius:4px;" data-hint='help info here'>Priority</label>
+                    <div class="optionsDiv">
+                        <div v-for="messionType in messionsType" draggable="true"
+                        @dragstart="dragStart($event,messionType)"
+                        @dragover.prevent="dragOver($event,messionType)"
+                        @dragenter="dragEnter($event,messionType)"
+                        @dragend="dragEnd($event,messionType)">
+                            {{messionType.name}}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <script src="radar.js"></script>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Facebook 素材测试</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+
+</head>
+
+<body>
+    <div style="height:10%">
+        <h1>Facebook 素材测试</h1>
+    </div>
+    <div id="facebookTest" style="display: flex; width:100%">
+        <div id="leftUI" style="width:80%">
+            <h3>第一步：检测谷歌表格填写正确，并上传素材</h3>
+            <label>将需要测试的素材从飞书文档复制到谷歌文档<br></label>
+            <a href="https://rivergame.feishu.cn/base/bascnvdmEuL8ZmAC9V7GBAgs5Zf?table=tblEyFnz51XUSTC0&view=vewafOtgqW">飞书文档地址<br></a>
+            <a href="https://docs.google.com/spreadsheets/d/1baEKsiR6iVYAS8whRi9Cvrc1jpHJNe9Zh-79Xc-07Ww/edit#gid=0">谷歌文档地址<br></a>
+            <label>注意：测试日期填写在B1，如果测试日期对应campaign没有则建立新的，如果已经存在则在该campaign中添加adset<br></label>
+            <label>注意：请确保从第3行开始 A列为中文名，C列为英文名，I列是创意，J列是出品，K列是自产制作（如果存在），N列是收片时间并且格式是类似“2022-04-19”<br></label>
+            <label>注意：请确保I、J、K中 所有不同的内容在谷歌表格CN2EN的Sheet中有正确的翻译（缩写）<br></label>
+            <button v-on:click="checkBtnClick()">Check</button>
+            <label>这步较慢，点一下耐心等耐即可，不要反复点击</label>
+        </div>
+        <div id="RightUI" style="width:20%">
+            <h3>第二步：正式建立广告</h3>
+            <label>请确保第一步正确完成，否则第二步将会失败</label>
+            <button v-on:click="createBtnClick()">Create</button>
+            <h6>{{ outText }}</h6>
+        </div>
+    </div>
+
+    <script src="facebookTest.js"></script>
+</body>
+
+</html>

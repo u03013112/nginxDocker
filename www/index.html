@@ -6,11 +6,19 @@
     <title>VUE</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <link rel="stylesheet" href="style2.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"
-        charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.7.0/hint.min.css" integrity="sha512-gnj0WGxmbeTgYXck9CyFjrdkEFcZE4xwnJb/nG3bcl5OlWHJ9ixRkJK0MDPtCytnO3IBIh0Omqawv0UPpl0LoA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/csshake/1.5.3/csshake.min.css">
+    <link rel="stylesheet" href="https://cdnjs.com/libraries/hint.css" />
+
 </head>
 
 <body>
+    <div style="display:flex;align-items: center;">123
+        <span class="badge shake-little shake-constant shake-constant--hover hint--bottom-left hint--large hint--warning" data-hint="You can show very very long sentences inside tooltips by using various available size variation classes.">i</span>
+    </div>
     <div id="topwar_helper_rightUI" style="position: absolute; width: 20%; height: 100%; right: 0px; background: pink;">
         <div id="app">
             <div v-show="notReady">
@@ -30,11 +38,16 @@
                     </div>
                     <div>
                         <input type="radio" id="Building" value="Building" name="radio0">
-                        <label for="Building">Building</label>
+                        <label for="Building" class="hint--botton  hint--small" style="border: 1px solid #eee;padding:3px 6px;border-radius:4px;" data-hint='Instructions for use
+                            This part helps players build and merge buildings in batches up to the current highest tech level. Please do not switch to the world map interface after clicking "Dispatch task", and do not manually merge units until the task is completed.Also, make sure you have enough open space and gold coins.'>Building</label>
                         <div class="menu">
                             <div>
                                 <input type="radio" id="Gold Mine" value="Gold Mine" name="radio1">
-                                <label for="Gold Mine">Gold Mine</label>
+                                <label for="Gold Mine" class="redpointPrefix">
+                                    Gold Mine
+                                    <i class="redpoint" v-if="goldMine.mergeLevel > 12"></i>
+                                </label>
+
                                 <div class="buildingMenu">
                                     <div style="height: 80px; background: white;">
                                         <h4 style="margin: 8px;">Technology</h4>
@@ -45,11 +58,10 @@
                                         <h4 style="margin: 8px;">Build task</h4>
                                         <h6 style="margin: 0px;">Build level {{ goldMine.mergeLevel }} to the following quantity</h6>
                                         <h6 style="margin: 0px;" id="topwar_helper_JKTaskInputResult">{{ goldMine.buildMax }}</h6>
-                                        <input id="topwar_helper_JKTaskInput" type="range" min="1" max="10"
-                                            name="topwar_helper_JKTaskInput">
+                                        <input id="topwar_helper_JKTaskInput" type="range" min="1" max="10" name="topwar_helper_JKTaskInput">
                                         <script type='text/javascript'>
-                                            $(function () {
-                                                $('#topwar_helper_JKTaskInput').bind('input propertychange', function () {
+                                            $(function() {
+                                                $('#topwar_helper_JKTaskInput').bind('input propertychange', function() {
                                                     $('#topwar_helper_JKTaskInputResult').html($(this).val());
                                                 });
                                             })
@@ -78,11 +90,10 @@
                                         <h4 style="margin: 8px;">Build task</h4>
                                         <h6 style="margin: 0px;">Build level {{ barrack.mergeLevel }} to the following quantity</h6>
                                         <h6 style="margin: 0px;" id="topwar_helper_BGCTaskInputResult">{{ barrack.buildMax }}</h6>
-                                        <input id="topwar_helper_BGCTaskInput" type="range" min="1" max="10"
-                                            name="topwar_helper_BGCTaskInput">
+                                        <input id="topwar_helper_BGCTaskInput" type="range" min="1" max="10" name="topwar_helper_BGCTaskInput">
                                         <script type='text/javascript'>
-                                            $(function () {
-                                                $('#topwar_helper_BGCTaskInput').bind('input propertychange', function () {
+                                            $(function() {
+                                                $('#topwar_helper_BGCTaskInput').bind('input propertychange', function() {
                                                     $('#topwar_helper_BGCTaskInputResult').html($(this).val());
                                                 });
                                             })
@@ -111,11 +122,10 @@
                                         <h4 style="margin: 8px;">Build task</h4>
                                         <h6 style="margin: 0px;">Build level {{ shipyard.mergeLevel }} to the following quantity</h6>
                                         <h6 style="margin: 0px;" id="topwar_helper_ZCCTaskInputResult">{{ shipyard.buildMax }}</h6>
-                                        <input id="topwar_helper_ZCCTaskInput" type="range" min="1" max="16"
-                                            name="topwar_helper_ZCCTaskInput">
+                                        <input id="topwar_helper_ZCCTaskInput" type="range" min="1" max="16" name="topwar_helper_ZCCTaskInput">
                                         <script type='text/javascript'>
-                                            $(function () {
-                                                $('#topwar_helper_ZCCTaskInput').bind('input propertychange', function () {
+                                            $(function() {
+                                                $('#topwar_helper_ZCCTaskInput').bind('input propertychange', function() {
                                                     $('#topwar_helper_ZCCTaskInputResult').html($(this).val());
                                                 });
                                             })

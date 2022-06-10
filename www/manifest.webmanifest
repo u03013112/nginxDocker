@@ -1,0 +1,15 @@
+{
+    "background_color": "purple",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "icon/icon.png",
+        "sizes": "168x168",
+        "type": "image/png"
+      }
+    ],
+    "name": "Awesome fox pictures",
+    "short_name": "Foxes",
+    "start_url": "."
+  }
+  
