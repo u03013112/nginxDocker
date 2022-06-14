@@ -47,6 +47,12 @@
                     </div>
                     <button>save config</button>
                 </div>
+                <div id="log">
+                    <!-- TODO:change to icon -->
+                    <div v-for="mession in messions">
+                        {{mession.name}}[{{mession.star}}] {{mession.status}}
+                    </div>
+                </div>
                 
             </div>
         </div>

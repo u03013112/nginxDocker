@@ -32,6 +32,9 @@ var radar = new Vue({
         // 不管是否升级，领取奖励
         autoGetReward:false,
 
+        messions:[
+            {'name':'name','star':5,'status':'waiting for reward'},
+        ]
     },
     methods: {
         optionsBtnClicked:function(){
