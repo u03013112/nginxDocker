@@ -17,12 +17,21 @@ var radar = new Vue({
         retryMax:10,
 
         optionActive:false,
+        // priorty
+        isPriorityActive:false,
         messionsType:[
             {'name':'aaa'},
             {'name':'bbb'},
             {'name':'ccc'},
         ],
         dragging: null,
+        // fill energy
+        autoSmallVIT:false,
+        autoLargeVIT:false,
+
+        // 不管是否升级，领取奖励
+        autoGetReward:false,
+
     },
     methods: {
         optionsBtnClicked:function(){
@@ -47,6 +56,7 @@ var radar = new Vue({
             const dst = newItems.indexOf(item);
             newItems.splice(dst,0,...newItems.splice(src,1))
             this.messionsType = newItems;
+            // TODO: save
         }
     }
 })

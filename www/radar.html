@@ -24,17 +24,28 @@
                 <button>stop</button>
                 <button v-on:click="optionsBtnClicked()">options</button>
                 <div id="options" v-show="optionActive">
-                    <input type="radio" id="Priority" value="Priority">
+                    <input type="checkbox" id="Priority" v-model="isPriorityActive">
                     <label for="Priority" class="hint--botton  hint--small" style="border: 1px solid #eee;padding:3px 6px;border-radius:4px;" data-hint='help info here'>Priority</label>
-                    <div class="optionsDiv">
-                        <div v-for="messionType in messionsType" draggable="true"
-                        @dragstart="dragStart($event,messionType)"
-                        @dragover.prevent="dragOver($event,messionType)"
-                        @dragenter="dragEnter($event,messionType)"
-                        @dragend="dragEnd($event,messionType)">
-                            {{messionType.name}}
-                        </div>
+                    <div v-show="isPriorityActive" v-for="messionType in messionsType" draggable="true"
+                    @dragstart="dragStart($event,messionType)"
+                    @dragover.prevent="dragOver($event,messionType)"
+                    @dragenter="dragEnter($event,messionType)"
+                    @dragend="dragEnd($event,messionType)">
+                        {{messionType.name}}
                     </div>
+                    <div class="one-line">
+                        <input type="checkbox" id="autoSmallVITCheckBox" v-model="autoSmallVIT">
+                        <label for="autoSmallVITCheckBox">auto Small VIT Capsules</label>
+                    </div>
+                    <div class="one-line">
+                        <input type="checkbox" id="autoLargeVITCheckBox" v-model="autoLargeVIT">
+                        <label for="autoLargeVITCheckBox">auto Large VIT Capsules</label>
+                    </div>
+                    <div class="one-line">
+                        <input type="checkbox" id="autoGetRewardCheckBox" v-model="autoGetReward">
+                        <label for="autoGetRewardCheckBox">auto get reward whether or not it will lead to an upgrade</label>
+                    </div>
+                    <button>save config</button>
                 </div>
                 
             </div>
