@@ -23,7 +23,7 @@
                 <button>start</button>
                 <button>stop</button>
                 <button v-on:click="optionsBtnClicked()">options</button>
-                <div id="options" v-show="optionActive">
+                <div class="options" v-show="optionActive">
                     <input type="checkbox" id="Priority" v-model="isPriorityActive">
                     <label for="Priority" class="hint--botton  hint--small" style="border: 1px solid #eee;padding:3px 6px;border-radius:4px;" data-hint='help info here'>Priority</label>
                     <div v-show="isPriorityActive" v-for="messionType in messionsType" draggable="true"
